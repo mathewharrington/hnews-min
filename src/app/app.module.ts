@@ -22,4 +22,6 @@ import { StoryFeedItemDetailComponent } from './components/story-feed-item-detai
   providers: [HackernewsApiService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {}
+
