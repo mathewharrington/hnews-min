@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HackernewsApiService } from '../../services/hackernews-api.service';
 import { ActivatedRoute} from '@angular/router';
 
@@ -12,7 +12,6 @@ export class StoryFeedItemDetailComponent implements OnInit {
   public id: number;
   public text: string;
   public title: string;
-  public type: string;
   public url: string;
   public feedItemFetched: boolean;
 
