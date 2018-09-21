@@ -1,28 +1,27 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 @Component({
   selector: 'app-story-feed-item',
   templateUrl: './story-feed-item.component.html',
   styleUrls: []
 })
+
 export class StoryFeedItemComponent implements OnInit {
 
   // Data bound properties.
   @Input() id: number;
   @Input() title: string;
   @Input() url: string;
-  @Input() score: number;
-  @Input() by: string;
-  @Input() time: number;
-  @Input() commentsCount: number;
 
   public domain: string;
-  public ws: string;
   
+  // Get source hostname - used for display of 'source: (xxxx.com)'
   extractHostname(url) 
   {
     if (!url) 
       return undefined;
-    let hostname;
+    
+      let hostname;
     
     if (url.indexOf('://') > -1) 
     {
@@ -38,11 +37,13 @@ export class StoryFeedItemComponent implements OnInit {
 
   constructor() {}
 
+  // Load each individual new item, set url.
   ngOnInit() 
   {
     this.domain = this.extractHostname(this.url);
   }
 
+  // Open link to source for given news item.
   openUrl() 
   {
     this.url ? window.open(this.url) : window.open(`/item/${this.id}`);

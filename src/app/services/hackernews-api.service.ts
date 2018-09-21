@@ -13,14 +13,14 @@ export class HackernewsApiService {
   // Get list of hackernews stories beginning from top and upto 'take'.
   getNumberOfFeedItems(feedType, take): Observable<any> 
   {
-    return this.getFeed(feedType)
-      .pipe(map(data => data.slice(0, take)))
-      .pipe(flatMap(data => from(data)))
-      .pipe(flatMap(data => this.getFeedItem(data)))
+    return this.getFeed(feedType)                     // Load feed.
+      .pipe(map(data => data.slice(0, take)))         // Trim feed.
+      .pipe(flatMap(data => from(data)))              // Flatmap, when observable results are more observables.
+      .pipe(flatMap(data => this.getFeedItem(data)))  // Get individual feed items.
       .pipe(map(data => ({ item: data, feedCount: this.cacheFeedSize })));
   }
 
-  // Gets entire hackernews feed - limit is 500.
+  // Gets entire hackernews feed - HN firebase limit is 500.
   getFeed(feedType): Observable<any> 
   {
     return this._api
