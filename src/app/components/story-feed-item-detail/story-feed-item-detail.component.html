@@ -1,0 +1,8 @@
+<div id="story-item-detail-wrapper">
+  <div id="story-item-detail-header" *ngIf="feedItemFetched">
+    <h3>{{title}}</h3>
+    <small *ngIf="url">
+      <a [href]="url">({{url}})</a>
+    </small>
+  </div>
+</div>
