@@ -1,5 +1,12 @@
-<ol *ngIf="!grabbingFeed">
+<!--<ol *ngIf="!grabbingFeed">
   <li *ngFor="let item of feed;">
     <app-story-feed-item [id]="item.id" [title]="item.title" [url]="item.url"></app-story-feed-item>
   </li>
-</ol>
+</ol>-->
+
+
+  <div class="card" *ngFor="let item of feed;">
+    <div class="card-body">
+      <app-story-feed-item [id]="item.id" [title]="item.title" [url]="item.url"></app-story-feed-item>
+    </div>
+  </div>
