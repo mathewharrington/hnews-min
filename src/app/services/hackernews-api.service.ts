@@ -16,7 +16,7 @@ export class HackernewsApiService {
     return this.getFeed(feedType)                     // Load feed.
       .pipe(map(data => data.slice(0, take)))         // Trim feed.
       .pipe(flatMap(data => from(data)))              // Flatmap, when observable results are more observables.
-      .pipe(flatMap(data => this.getFeedItem(data)))  // Get individual feed items.
+      .pipe(flatMap(data => this.getFeedItem(data)))  // Get individual feed items by id.
       .pipe(map(data => ({ item: data, feedCount: this.cacheFeedSize })));
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HackernewsApiService } from '../../services/hackernews-api.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { switchMap, map } from 'rxjs/operators';
 
 @Component({
@@ -29,8 +29,8 @@ export class StoryFeedComponent implements OnInit {
     private route: ActivatedRoute,
   ) {}
 
-  ngOnInit() {
-    
+  ngOnInit() 
+  {    
     // Harcode for now, make configurable from UI.
     this.feedType = "topstories";
     this.take = 20;
@@ -58,7 +58,8 @@ export class StoryFeedComponent implements OnInit {
       );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy() 
+  {
     this.subscription.unsubscribe();
   }
 }
