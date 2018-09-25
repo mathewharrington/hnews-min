@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'story-limit-picker',
   templateUrl: './story-limit-picker.component.html',
-  styleUrls: ['./story-limit-picker.component.scss']
+  styleUrls: []
 })
 export class StoryLimitPickerComponent implements OnInit, OnChanges {
   

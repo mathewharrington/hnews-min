@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, SimpleChanges } from '@angular/core';
 import { HackernewsApiService } from '../../services/hackernews-api.service';
-import { ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { switchMap, map } from 'rxjs/operators';
 
 @Component({
@@ -27,7 +27,6 @@ export class StoryFeedComponent implements OnInit {
     private cdRef: ChangeDetectorRef,
     private _api: HackernewsApiService,
     private route: ActivatedRoute,
-    private router: Router    
   ) {}
 
   ngOnInit() 
@@ -39,7 +38,7 @@ export class StoryFeedComponent implements OnInit {
       .pipe(
         switchMap(params => {
           this.feed = [];
-          this.take = +params.amount || 20; // Default to twenty stories.
+          this.take = +params.amount || 20; // Default to twenty stories if amount not set.
           return this._api.getNumberOfFeedItems(this.feedType, this.take);
         })
       )
@@ -55,7 +54,15 @@ export class StoryFeedComponent implements OnInit {
           this.feed.push(data.item);
           this.cdRef.detectChanges();
         },
-        error => console.log(error)
+        error =>
+        { 
+          console.log("Error reading stream.")
+          console.log(error)
+        },
+        () => 
+        {
+          console.log("Completed reading stream.")
+        },
       );
   }
 
