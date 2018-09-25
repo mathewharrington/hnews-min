@@ -1,0 +1,11 @@
+<div class="form-row align-items-center">
+<div class="col-auto my-1">
+    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+    <select class="mr-sm-2" id="inlineFormCustomSelect" (change)="ngOnChanges($event.target.value)">
+      <option selected>Number Of Stories</option>
+      <option value="20">Twenty</option>
+      <option value="100">One Hundred</option>
+      <option value="250">Two Hundred & Fifty</option>
+    </select>
+  </div>
+</div>

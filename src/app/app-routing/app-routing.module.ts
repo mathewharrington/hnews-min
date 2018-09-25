@@ -5,6 +5,7 @@ import { StoryFeedItemDetailComponent } from '../components/story-feed-item-deta
 
 // Unused now in minimal state. Would enable /[subdomain] style navigation to each of the below endpoints.
 const routes: Routes = [
+  { path: 'app-story-feed', data: {  }, component: StoryFeedComponent },
   { path: 'topstories', data: { feed: 'topstories' }, component: StoryFeedComponent },
   { path: '', redirectTo: 'topstories', pathMatch: 'full' },
   { path: 'newstories', data: { feed: 'newstories' }, component: StoryFeedComponent },

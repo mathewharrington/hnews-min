@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, SimpleChanges } from '@angular/core';
 import { HackernewsApiService } from '../../services/hackernews-api.service';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { switchMap, map } from 'rxjs/operators';
 
 @Component({
@@ -27,18 +27,19 @@ export class StoryFeedComponent implements OnInit {
     private cdRef: ChangeDetectorRef,
     private _api: HackernewsApiService,
     private route: ActivatedRoute,
+    private router: Router    
   ) {}
 
   ngOnInit() 
   {    
-    // Harcode for now, make configurable from UI.
+    // Harcode to take from top stories for now, make configurable from UI.
     this.feedType = "topstories";
-    this.take = 20;
 
     this.subscription = this.route.queryParams
       .pipe(
         switchMap(params => {
           this.feed = [];
+          this.take = +params.amount || 20; // Default to twenty stories.
           return this._api.getNumberOfFeedItems(this.feedType, this.take);
         })
       )
@@ -60,6 +61,7 @@ export class StoryFeedComponent implements OnInit {
 
   ngOnDestroy() 
   {
+    console.log("Unsubscribing...");
     this.subscription.unsubscribe();
   }
 }
