@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hackernews-clone": {
+    "news-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -48,18 +48,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hackernews-clone:build"
+            "browserTarget": "news-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hackernews-clone:build:production"
+              "browserTarget": "news-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hackernews-clone:build"
+            "browserTarget": "news-app:build"
           }
         },
         "test": {
@@ -93,7 +93,7 @@
         }
       }
     },
-    "hackernews-clone-e2e": {
+    "news-app-e2e": {
       "root": "e2e",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -102,7 +102,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "hackernews-clone:serve"
+            "devServerTarget": "news-app:serve"
           }
         },
         "lint": {
@@ -119,7 +119,7 @@
       }
     }
   },
-  "defaultProject": "hackernews-clone",
+  "defaultProject": "news-app",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
